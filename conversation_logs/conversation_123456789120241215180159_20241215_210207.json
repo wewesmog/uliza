@@ -1,0 +1,52 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-15T21:02:07.571609",
+    "total_messages": 2,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting missing parameters for Paybill_tool transaction",
+            "parameters": {
+              "response": "To proceed with the transaction, please provide your account number and the amount you wish to pay.",
+              "parameters": {
+                "biller_code": "234"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T18:01:13.488225+00:00",
+      "conversation_id": "123456789120241215180050"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameters for paybill_tool: account_number and amount",
+            "parameters": {
+              "biller_code": "234"
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:59:59.887371+00:00",
+      "conversation_id": "123456789120241215175944"
+    }
+  ]
+}

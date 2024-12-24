@@ -1,0 +1,58 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-15T21:02:53.105848",
+    "total_messages": 2,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the Paybill_tool transaction",
+            "parameters": {
+              "response": "You are about to pay 23243 to biller code 234 from account number 1234567890. Please confirm to proceed with the transaction.",
+              "parameters": {
+                "amount": "23243",
+                "biller_code": "234",
+                "account_number": "1234567890"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T18:02:15.403196+00:00",
+      "conversation_id": "123456789120241215180159"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting missing parameters for Paybill_tool transaction",
+            "parameters": {
+              "response": "To proceed with the transaction, please provide your account number and the amount you wish to pay.",
+              "parameters": {
+                "biller_code": "234"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T18:01:13.488225+00:00",
+      "conversation_id": "123456789120241215180050"
+    }
+  ]
+}

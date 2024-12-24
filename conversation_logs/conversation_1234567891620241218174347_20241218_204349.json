@@ -1,0 +1,75 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "78916",
+    "timestamp": "2024-12-18T20:43:49.067391",
+    "total_messages": 4,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The user has requested their account balance, but the required account number parameter is missing.",
+            "parameters": {
+              "response": "I need to collect your account number to check your balance.",
+              "agent_parameters": {}
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:42:28.898816+00:00",
+      "conversation_id": "1234567891620241218174218"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The user has requested their account balance, but the required account number parameter is missing.",
+            "parameters": {
+              "response": "I need to collect your account number to check your balance.",
+              "agent_parameters": {}
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:42:26.546773+00:00",
+      "conversation_id": "1234567891620241218174218"
+    },
+    {
+      "role": "user",
+      "content": "What is my balance?",
+      "timestamp": "2024-12-18T17:42:23.937472+00:00",
+      "conversation_id": "1234567891620241218174218"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer is inquiring about their balance, which is a financial operation request.",
+            "parameters": {
+              "response": "I will connect you to an agent who can help you with your balance inquiry.",
+              "agent_parameters": {}
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:42:23.937472+00:00",
+      "conversation_id": "1234567891620241218174218"
+    }
+  ]
+}

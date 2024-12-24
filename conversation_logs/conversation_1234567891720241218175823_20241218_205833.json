@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "78917",
+    "timestamp": "2024-12-18T20:58:33.008698",
+    "total_messages": 1,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User needs to provide their account number to check the balance.",
+            "context": "User is asking for account balance, I need to collect their account number.",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:57:42.323489+00:00",
+      "conversation_id": "1234567891720241218175508"
+    }
+  ]
+}

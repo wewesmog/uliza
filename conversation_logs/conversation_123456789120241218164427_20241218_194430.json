@@ -1,0 +1,368 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-18T19:44:30.608045",
+    "total_messages": 19,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has confirmed the transaction and all required parameters are validated.",
+            "parameters": {
+              "amount": "1000",
+              "account_number": "1234567890"
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:43:58.030150+00:00",
+      "conversation_id": "123456789120241218164350"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transaction.",
+            "parameters": {
+              "response": "You have provided an amount of 1000 and an account number of 1234567890. Please confirm if you would like to proceed with this transaction.",
+              "parameters": {
+                "amount": "1000",
+                "account_number": "1234567890"
+              },
+              "next_best_agent": "tool_executor_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:43:09.829657+00:00",
+      "conversation_id": "123456789120241218164302"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transaction.",
+            "parameters": {
+              "response": "You have provided an amount of 1000 and an account number of 1234567890. Please confirm if you would like to proceed with this transaction.",
+              "parameters": {
+                "amount": "1000",
+                "account_number": "1234567890"
+              },
+              "next_best_agent": "tool_executor_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:42:03.051029+00:00",
+      "conversation_id": "123456789120241218164152"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transaction.",
+            "parameters": {
+              "response": "You have provided an amount of 1000 and an account number of 1234567890. Please confirm if you would like to proceed with this transaction.",
+              "parameters": {
+                "amount": "1000",
+                "account_number": "1234567890"
+              },
+              "next_best_agent": "tool_executor_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:39:11.319825+00:00",
+      "conversation_id": "123456789120241218163858"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting missing parameters for the money transfer.",
+            "parameters": {
+              "response": "Please provide the amount you want to transfer and your friend's account number.",
+              "parameters": {
+                "amount": "",
+                "account_number": ""
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:37:34.255477+00:00",
+      "conversation_id": "123456789120241218163700"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, but required parameters like account numbers and amount are missing.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "parameter_request_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:37:30.350817+00:00",
+      "conversation_id": "123456789120241218163700"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer money to my friend",
+      "timestamp": "2024-12-18T16:37:13.564413+00:00",
+      "conversation_id": "123456789120241218163700"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, but required parameters like account numbers and amount are missing.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T16:37:13.564413+00:00",
+      "conversation_id": "123456789120241218163700"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, but required parameters like account numbers and amount are missing.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "parameter_request_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:31:25.875441+00:00",
+      "conversation_id": "123456789120241217153107"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, but required parameters like account numbers and amount are missing.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "parameter_request_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:31:22.428013+00:00",
+      "conversation_id": "123456789120241217153107"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer money to my friend",
+      "timestamp": "2024-12-17T15:31:18.492144+00:00",
+      "conversation_id": "123456789120241217153107"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, which requires financial operations handling.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:31:18.492144+00:00",
+      "conversation_id": "123456789120241217153107"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {
+                "amount": "23243",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:29:22.867728+00:00",
+      "conversation_id": "123456789120241217152848"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {
+                "amount": "23243",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:29:10.343484+00:00",
+      "conversation_id": "123456789120241217152848"
+    },
+    {
+      "role": "user",
+      "content": "I confirm the transaction",
+      "timestamp": "2024-12-17T15:29:06.778026+00:00",
+      "conversation_id": "123456789120241217152848"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {
+                "amount": "23243",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-17T15:29:06.778026+00:00",
+      "conversation_id": "123456789120241217152848"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:40:13.094415+00:00",
+      "conversation_id": "123456789120241215193959"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:38:10.340045+00:00",
+      "conversation_id": "123456789120241215193803"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:36:14.979404+00:00",
+      "conversation_id": "123456789120241215193608"
+    }
+  ]
+}

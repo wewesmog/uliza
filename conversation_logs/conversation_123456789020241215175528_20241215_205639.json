@@ -1,0 +1,100 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "timestamp": "2024-12-15T20:56:39.433072",
+    "total_messages": 4,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "All required parameters are collected, validated, and the user has confirmed the transaction",
+            "tool_type": "transactional",
+            "parameters": {
+              "response": "Executing the transaction",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "2000",
+                "biller_code": "234",
+                "account_number": "323232232323"
+              }
+            },
+            "destination_tool": "paybill_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:52:13.186068+00:00",
+      "conversation_id": "123456789020241215175159"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:52:13.186068+00:00",
+      "conversation_id": "123456789020241215175159"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:48:01.674696+00:00",
+      "conversation_id": "123456789020241215174747"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "All required parameters are collected, validated, and the user has confirmed the transaction",
+            "tool_type": "transactional",
+            "parameters": {
+              "response": "Executing the transaction",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "234",
+                "account_number": "323232232323"
+              },
+              "next_best_agent": "tool_executor_agent"
+            },
+            "destination_tool": "paybill_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:48:01.673701+00:00",
+      "conversation_id": "123456789020241215174747"
+    }
+  ]
+}

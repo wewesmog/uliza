@@ -1,0 +1,54 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-15T22:38:06.663202",
+    "total_messages": 2,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:36:14.979404+00:00",
+      "conversation_id": "123456789120241215193608"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transaction and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "response": "Your payment of KES 23243 to biller code 234 was successful. Reference number: RCP725147. Is there anything else I can assist you with today?",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:29:31.419741+00:00",
+      "conversation_id": "123456789120241215192921"
+    }
+  ]
+}

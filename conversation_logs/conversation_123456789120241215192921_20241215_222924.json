@@ -1,0 +1,133 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-15T22:29:24.623295",
+    "total_messages": 4,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Executing the Paybill_tool transaction as all required parameters are present, validated and the user has confirmed the transaction.",
+            "tool_type": "transactional",
+            "parameters": {
+              "response": {
+                "code": "SUCCESS_001",
+                "status": "success",
+                "details": {
+                  "amount": "23243",
+                  "biller_code": "234",
+                  "account_number": "1234567890",
+                  "receipt_number": "RCP875125"
+                },
+                "message": "Your payment of KES 23243 to 234 was successful. Reference number: RCP875125.",
+                "timestamp": "2024-12-15T18:34:57.279084+00:00",
+                "transaction_id": "BIL212599"
+              },
+              "next_best_agent": "triage_agent",
+              "tool_parameters": {
+                "amount": "23243",
+                "biller_code": "234",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "paybill_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T19:17:26.047514+00:00",
+      "conversation_id": "123456789120241215191717"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "timestamp": "2024-12-15T19:17:26.047514+00:00",
+      "response_type": "handoff",
+      "conversation_id": "123456789120241215191717",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "amount": "23243",
+          "reason": null,
+          "biller_code": "234",
+          "account_number": "1234567890",
+          "receipt_number": "RCP725147"
+        },
+        "message": "Your payment of KES 23243 to 234 was successful. Reference number: RCP725147.",
+        "timestamp": "2024-12-15T19:17:26.047514+00:00",
+        "tool_name": "paybill_tool",
+        "transaction_id": "BIL613210"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Executing the Paybill_tool transaction as all required parameters are present, validated and the user has confirmed the transaction.",
+            "tool_type": "transactional",
+            "parameters": {
+              "response": {
+                "code": "SUCCESS_001",
+                "status": "success",
+                "details": {
+                  "amount": "23243",
+                  "biller_code": "234",
+                  "account_number": "1234567890",
+                  "receipt_number": "RCP875125"
+                },
+                "message": "Your payment of KES 23243 to 234 was successful. Reference number: RCP875125.",
+                "timestamp": "2024-12-15T18:34:57.279084+00:00",
+                "transaction_id": "BIL212599"
+              },
+              "next_best_agent": "triage_agent",
+              "tool_parameters": {
+                "amount": "23243",
+                "biller_code": "234",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "paybill_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T18:53:20.819065+00:00",
+      "conversation_id": "123456789120241215185310"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_to": "tool_executor_agent",
+        "response_type": "response_from_tool",
+        "response_from_tool": {
+          "code": "SUCCESS_001",
+          "status": "success",
+          "details": {
+            "amount": "23243",
+            "reason": null,
+            "biller_code": "234",
+            "account_number": "1234567890",
+            "receipt_number": "RCP727354"
+          },
+          "message": "Your payment of KES 23243 to 234 was successful. Reference number: RCP727354.",
+          "timestamp": "2024-12-15T18:53:20.819065+00:00",
+          "transaction_id": "BIL618481"
+        }
+      },
+      "timestamp": "2024-12-15T18:53:20.819065+00:00",
+      "conversation_id": "123456789120241215185310"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "timestamp": "2024-12-15T20:22:47.852808",
+    "total_messages": 4,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": "I already shared the biller code with you! Dont ask me again!!!",
+      "timestamp": "2024-12-15T17:21:48.491057+00:00",
+      "conversation_id": "123456789020241215172135"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect missing parameters for bill payment and confirm the transaction",
+            "parameters": {
+              "response": "I apologize for any confusion, but I couldn't find the biller code in our previous conversation. Could you please provide the biller code again? Also, please confirm if you want to proceed with the payment of 2000 Dollars from account number 323232232323.",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "",
+                "account_number": "323232232323"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:21:48.491057+00:00",
+      "conversation_id": "123456789020241215172135"
+    },
+    {
+      "role": "user",
+      "content": "please share a sample account number",
+      "timestamp": "2024-12-15T17:17:39.102757+00:00",
+      "conversation_id": "123456789020241215171728"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect missing parameters for bill payment",
+            "parameters": {
+              "response": "To proceed with your bill payment, could you please provide the biller code? Also, please confirm if you want to proceed with the payment of 2000 Dollars from account number 323232232323.",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "",
+                "account_number": "323232232323"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:17:39.102757+00:00",
+      "conversation_id": "123456789020241215171728"
+    }
+  ]
+}

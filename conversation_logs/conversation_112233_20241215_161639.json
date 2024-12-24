@@ -1,0 +1,343 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "conversation_id": "112233",
+    "timestamp": "2024-12-15T16:16:39.569852",
+    "total_messages": 24,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": "My debit card is lost",
+      "timestamp": "2024-12-15T11:13:14.806284+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has reported a lost debit card which is a serious issue and falls under the use cases of the Complaints Agent",
+            "parameters": {
+              "message_for_agent": "The customer has lost their debit card. Please assist them with the necessary steps for card replacement and ensure to check for any unauthorized transactions."
+            },
+            "destination_agent": "Complaints Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T11:13:14.806284+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer some funds",
+      "timestamp": "2024-12-15T11:11:33.024884+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T11:11:33.024884+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer some funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T11:09:12.362096+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T11:09:12.362096+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer some funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T11:09:12.362096+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T11:09:12.362096+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          },
+          {
+            "reason": "The customer has mentioned a health issue which is outside the scope of our AI agents. This needs human intervention",
+            "parameters": {
+              "message_for_agent": "The customer has mentioned they are sick and need a doctor. Please provide appropriate assistance."
+            },
+            "destination_agent": "Human Handoff Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:59:02.662714+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    }
+  ]
+}

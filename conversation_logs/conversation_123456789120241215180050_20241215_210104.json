@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7891",
+    "timestamp": "2024-12-15T21:01:04.104659",
+    "total_messages": 1,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameters for paybill_tool: account_number and amount",
+            "parameters": {
+              "biller_code": "234"
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:59:59.887371+00:00",
+      "conversation_id": "123456789120241215175944"
+    }
+  ]
+}

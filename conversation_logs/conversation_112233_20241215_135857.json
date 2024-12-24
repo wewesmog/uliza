@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "conversation_id": "112233",
+    "timestamp": "2024-12-15T13:58:57.253117",
+    "total_messages": 2,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": "I want to transfer som e funds, also I am sick and I need a doctor",
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The customer has expressed a need to transfer funds which falls under the use cases of the Transaction Agent",
+            "parameters": {
+              "message_for_agent": "The customer wants to transfer funds. Please assist them with this process."
+            },
+            "destination_agent": "Transaction Agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T10:50:03.541300+00:00",
+      "conversation_id": "112233"
+    }
+  ]
+}

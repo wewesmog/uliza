@@ -1,0 +1,151 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "78922",
+    "timestamp": "2024-12-18T21:15:40.012631",
+    "total_messages": 6,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting the missing account number for balance inquiry.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is asking for balance, I have requested them for account number",
+              "response": "Please provide your account number to check your balance.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:15:00.491082+00:00",
+      "conversation_id": "1234567892220241218181454"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting the missing parameters for a balance inquiry.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has provided their account number but needs to provide additional parameters for a transfer.",
+              "response": "Please provide the amount you would like to transfer and the account number you want to transfer to.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {
+                "amount": "",
+                "account_number_to": ""
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:13:40.129503+00:00",
+      "conversation_id": "1234567892220241218181332"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting the missing account number for balance inquiry.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is asking for balance, I have requested them for account number",
+              "response": "Please provide your account number to check your balance.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:12:48.473697+00:00",
+      "conversation_id": "1234567892220241218181240"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User is asking for account balance, but account number is missing.",
+            "context": "User is asking for balance, I have requested them for account number",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:12:45.962631+00:00",
+      "conversation_id": "1234567892220241218181240"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User is asking for account balance, but account number is missing.",
+            "parameters": {
+              "context": "User is asking for balance, I have requested them for account number",
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_agent": "faq_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:09:04.219963+00:00",
+      "conversation_id": "1234567892220241218180854"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameter for balance inquiry.",
+            "context": "User is asking for account balance, but account number is missing.",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T18:09:01.272415+00:00",
+      "conversation_id": "1234567892220241218180854"
+    }
+  ]
+}

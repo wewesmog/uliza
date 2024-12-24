@@ -1,0 +1,58 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "78917",
+    "timestamp": "2024-12-18T21:02:08.961827",
+    "total_messages": 2,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User wants to check their account balance.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for balance, I have requested them for account number",
+              "response": "Please provide your account number to check your balance.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_tool": "balance_inquiry_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:58:36.858333+00:00",
+      "conversation_id": "1234567891720241218175823"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User needs to provide their account number to check the balance.",
+            "context": "User is asking for account balance, I need to collect their account number.",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {
+                "account_number": ""
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:57:42.323489+00:00",
+      "conversation_id": "1234567891720241218175508"
+    }
+  ]
+}

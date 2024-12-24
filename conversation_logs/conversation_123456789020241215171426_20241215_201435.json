@@ -1,0 +1,72 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "timestamp": "2024-12-15T20:14:35.979089",
+    "total_messages": 4,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": " my account number is 323232232323 and I want to pay 2000 Dollars",
+      "timestamp": "2024-12-15T17:13:48.975540+00:00",
+      "conversation_id": "123456789020241215171336"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect valid parameters for water bill payment",
+            "parameters": {
+              "response": "To proceed with your water bill payment, could you please provide a valid account number (8-12 numeric digits)?",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "234",
+                "account_number": ""
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:13:48.975540+00:00",
+      "conversation_id": "123456789020241215171336"
+    },
+    {
+      "role": "user",
+      "content": "the biller code is 234, my account number is 323232 and I want to pay 2000 Dollars",
+      "timestamp": "2024-12-15T17:12:15.768691+00:00",
+      "conversation_id": "123456789020241215171143"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect valid parameters for water bill payment",
+            "parameters": {
+              "response": "To proceed with your water bill payment, could you please provide a valid account number (8-12 numeric digits) and the amount you want to pay in numeric format?",
+              "parameters": {
+                "amount": "",
+                "biller_code": "234",
+                "account_number": ""
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:12:15.768691+00:00",
+      "conversation_id": "123456789020241215171143"
+    }
+  ]
+}

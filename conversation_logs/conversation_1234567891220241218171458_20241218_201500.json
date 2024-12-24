@@ -1,0 +1,102 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "78912",
+    "timestamp": "2024-12-18T20:15:00.855227",
+    "total_messages": 5,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting the amount for the balance inquiry.",
+            "parameters": {
+              "response": "Please provide the amount you would like to inquire about.",
+              "parameters": {
+                "amount": "",
+                "account_number": "1234567890"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:14:04.549073+00:00",
+      "conversation_id": "1234567891220241218171358"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting the user's account number for balance inquiry.",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "parameters": {
+                "amount": "",
+                "account_number": ""
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:09:21.341844+00:00",
+      "conversation_id": "1234567891220241218170910"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User's account number is missing for the balance inquiry.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:09:19.157932+00:00",
+      "conversation_id": "1234567891220241218170910"
+    },
+    {
+      "role": "user",
+      "content": "Yes, what is my balance?",
+      "timestamp": "2024-12-18T17:09:17.263765+00:00",
+      "conversation_id": "1234567891220241218170910"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Customer is inquiring about their account balance, which requires financial operations handling.",
+            "parameters": {
+              "amount": "",
+              "account_number": ""
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-18T17:09:17.263765+00:00",
+      "conversation_id": "1234567891220241218170910"
+    }
+  ]
+}

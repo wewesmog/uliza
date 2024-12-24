@@ -1,0 +1,72 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123456",
+    "session_id": "7890",
+    "timestamp": "2024-12-15T20:21:41.099048",
+    "total_messages": 4,
+    "query_limit": 2
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": "please share a sample account number",
+      "timestamp": "2024-12-15T17:17:39.102757+00:00",
+      "conversation_id": "123456789020241215171728"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect missing parameters for bill payment",
+            "parameters": {
+              "response": "To proceed with your bill payment, could you please provide the biller code? Also, please confirm if you want to proceed with the payment of 2000 Dollars from account number 323232232323.",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "",
+                "account_number": "323232232323"
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:17:39.102757+00:00",
+      "conversation_id": "123456789020241215171728"
+    },
+    {
+      "role": "user",
+      "content": " my account number is 32323223 and I want to pay 2000 Dollars",
+      "timestamp": "2024-12-15T17:15:03.713744+00:00",
+      "conversation_id": "123456789020241215171426"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Need to collect valid parameters for bill payment",
+            "parameters": {
+              "response": "To proceed with your bill payment, could you please provide a valid account number (8-12 numeric digits) and the biller code?",
+              "parameters": {
+                "amount": "2000",
+                "biller_code": "",
+                "account_number": ""
+              },
+              "next_best_agent": "parameter_collector_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-15T17:15:03.713744+00:00",
+      "conversation_id": "123456789020241215171426"
+    }
+  ]
+}
