@@ -84,6 +84,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
     ## AVAILABLE TOOLS AND REQUIRED PARAMETERS
     Communication Tool:
     1. chat_tool:
+       tool_type: informational
        Purpose: Direct customer interaction. Call this tool to talk to the customer e.g for parameter requests or confirmation.
        Use when:
        - Requesting specific parameters
@@ -92,8 +93,9 @@ def parameter_collector_agent(state: MainState) -> MainState:
        - Providing status updates
   
     Transaction Tools:
-    **Important: DO NOT call these tools directly, your role is to collect parameters. Once completed handoff to tool_executor_agent**
+    **Important: DO NOT call these transactional tools directly, your role is to collect parameters. Once completed handoff to tool_executor_agent**
     1. Account_transfer_tool:
+       tool_type: Transactional
        Required:
        - account_number_from (string)
        - account_number_to (string)
@@ -103,6 +105,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
        - confirm (boolean)
 
     2. Balance_inquiry_tool:
+       tool_type: Transactional
        Required:
        - account_number (string)
        Optional:
@@ -110,6 +113,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
        - confirm (boolean)
 
     3. Transaction_history_tool:
+       tool_type: Transactional
        Required:
        - account_number (string)
        Optional:
@@ -117,6 +121,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
        - transaction_type (string)
 
     4. Paybill_tool:
+       tool_type: Transactional
        Required:
        - biller_code (string)
        - account_number (string)
@@ -134,7 +139,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
     5. Request missing parameters or proceed with complete ones
     6. If user has not explicitly confirmed the transaction, request confirmation
     7. Route to appropriate agent based on status:
-       - tool_executor_agent when all parameters are complete
+       - tool_executor_agent when all parameters are complete. Do not call transactional tools directly, your role is to validate parameters and handoff to the tool_executor_agent
        - Other agents based on specific scenarios
        - When not sure, handoff to transaction_agent
 
@@ -151,7 +156,7 @@ def parameter_collector_agent(state: MainState) -> MainState:
                 "reason": "[Clear explanation for tool use]",
                 "parameters": {{
                     "response": "[Message conten to human or tool/agent ]",
-                    "next_best_agent": "[agent name for follow-up] - # This is the agent that is best suited to handle the next step after tool execution. If unsure, choose yourself - tool_executor_agent",
+                    "next_best_agent": "[agent name for follow-up] - # By default, the next best agent is yourself - parameter_collector_agent, unless you are sure another agent is better suited to handle the next step",
                     "context" : "What is currently being handled e.g user is asking for balance, I have requested them for account number",
                     "tool_parameters": {{ "#Required and/or available transaction or customer parameters, empty if missing - use exact parameter names e.g account_number, amount"
                         "[parameter_name]": "[value]",

@@ -20,6 +20,9 @@ def respond_to_human(state: MainState) -> MainState:
     Recent Messages (Last 10): {recent_conversation_history}
     KYC Status: {kyc}
 
+    **Important**: Please note that conversation history is arranged in reverse chronological order. When analyzing the conversation history, consider the most recent messages first. Some of the records may
+    be incomplete or not relevant to the current conversation.
+
     ## AVAILABLE TOOLS
     1. chat_tool:
        - Purpose: Direct customer communication

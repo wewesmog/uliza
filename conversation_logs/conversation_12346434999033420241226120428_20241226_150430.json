@@ -1,0 +1,112 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "349990334",
+    "timestamp": "2024-12-26T15:04:30.162374",
+    "total_messages": 5,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting a fund transfer.",
+              "response": "Please confirm the transfer of 1000 from your account number 1234567890 to your friend's account number 2234567890.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:03:37.389176+00:00",
+      "conversation_id": "12346434999033420241226120331"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting a fund transfer.",
+              "response": "Please confirm the transfer of 1000 from your account number 1234567890 to your friend's account number 2234567890.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:02:26.614770+00:00",
+      "conversation_id": "12346434999033420241226120215"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing confirmation for the transfer.",
+            "context": "User is requesting a fund transfer.",
+            "parameters": {
+              "response": "I need you to confirm the transfer of 1000 from your account number 1234567890 to your friend's account number 2234567890.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:02:24.357636+00:00",
+      "conversation_id": "12346434999033420241226120215"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer 1000 to my friend's account, My account number is 1234567890. My friend's account number is 2234567890",
+      "timestamp": "2024-12-26T12:02:21.964943+00:00",
+      "conversation_id": "12346434999033420241226120215"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "The user is requesting to transfer funds, which falls under financial operations.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is requesting a fund transfer.",
+              "response": "Initiating a transfer of 1000 from account number 1234567890 to account number 2234567890.",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number": "1234567890",
+                "recipient_account_number": "2234567890"
+              }
+            },
+            "destination_tool": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:02:21.964943+00:00",
+      "conversation_id": "12346434999033420241226120215"
+    }
+  ]
+}

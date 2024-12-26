@@ -1,0 +1,97 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "355623",
+    "timestamp": "2024-12-26T14:43:31.227770",
+    "total_messages": 5,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T11:38:12.414953+00:00",
+      "conversation_id": "12346435562320241226113747"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T11:38:12.414186+00:00",
+      "conversation_id": "12346435562320241226113747"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-26T11:38:06.231644+00:00",
+      "conversation_id": "12346435562320241226113747"
+    },
+    {
+      "role": "user",
+      "content": "I want to check my account balance, my account number is 1234567890",
+      "timestamp": "2024-12-26T11:38:01.074870+00:00",
+      "conversation_id": "12346435562320241226113747"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "The user wants to check their account balance, which falls under the financial operations handled by the transaction agent.",
+            "parameters": {
+              "context": "User wants to check their account balance and has provided their account number.",
+              "response": "The user wants to check their account balance.",
+              "agent_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T11:38:01.074870+00:00",
+      "conversation_id": "12346435562320241226113747"
+    }
+  ]
+}

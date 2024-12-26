@@ -15,6 +15,8 @@ def complaints_agent(state: MainState) -> MainState:
     User Input: {user_query}
     Conversation History: {json.dumps(conversation_history, ensure_ascii=False)}
     KYC Status: {kyc}
+    **Important**: Please note that conversation history is arranged in reverse chronological order. When analyzing the conversation history, consider the most recent messages first. Some of the records may
+    be incomplete or not relevant to the current conversation.
 
     ## COMPLAINT HANDLING TOOLS
 

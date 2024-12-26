@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34999034",
+    "timestamp": "2024-12-26T15:00:54.152958",
+    "total_messages": 1,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting missing parameters for the transaction.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has confirmed a transaction but required parameters are missing.",
+              "response": "Please provide the following details to proceed with the transaction: account number to transfer from, account number to transfer to, and the amount to transfer.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:00:39.931682+00:00",
+      "conversation_id": "1234643499903420241226120034"
+    }
+  ]
+}

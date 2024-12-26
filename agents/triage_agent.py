@@ -30,6 +30,9 @@ def triage_agent(state: MainState) -> MainState:
     Current Conversation History for this conversation turn: {current_conversation_history}
     KYC Status: {kyc}
 
+    **Important**: Please note that conversation history is arranged in reverse chronological order. When analyzing the conversation history, consider the most recent messages first. Some of the records may
+    be incomplete or not relevant to the current conversation.
+
     ## AVAILABLE AGENTS
 
     1. faq_agent:

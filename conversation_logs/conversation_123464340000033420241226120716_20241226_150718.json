@@ -1,0 +1,64 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "3400000334",
+    "timestamp": "2024-12-26T15:07:18.344440",
+    "total_messages": 2,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer parameters.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:06:25.698791+00:00",
+      "conversation_id": "123464340000033420241226120620"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer parameters.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:05:35.656835+00:00",
+      "conversation_id": "123464340000033420241226120530"
+    }
+  ]
+}

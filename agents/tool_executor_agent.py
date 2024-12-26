@@ -27,6 +27,9 @@ def tool_executor_agent(state: MainState) -> MainState:
     Current Conversation History for this conversation turn: {current_conversation_history}
     KYC Status: {kyc}
    
+    **Important**: Please note that conversation history is arranged in reverse chronological order. When analyzing the conversation history, consider the most recent messages first. Some of the records may
+    be incomplete or not relevant to the current conversation.
+
     ## AVAILABLE AGENTS
 
     1. parameter_collector_agent:
@@ -93,7 +96,7 @@ def tool_executor_agent(state: MainState) -> MainState:
 
     2. balance_inquiry_tool:
        Purpose : Check account balance
-       Tool Type : Informational
+       Tool Type : Transactional
        Required Parameters:
        - account_number: 8-12 digits, numeric only
        Optional:
@@ -102,7 +105,7 @@ def tool_executor_agent(state: MainState) -> MainState:
 
     3. transaction_history_tool:
        Purpose : View transaction history
-       Tool Type : Informational
+       Tool Type : Transactional
        Required Parameters:
        - account_number: 8-12 digits, numeric only
        Optional:
@@ -209,7 +212,7 @@ def tool_executor_agent(state: MainState) -> MainState:
     """
 
     messages = [
-        {"role": "system", "content": "You are a secure financial transaction executor focusing on parameter validation and security compliance."},
+        {"role": "system", "content": "You are a secure financial transaction executor focusing on parameter validation and security compliance. Do not call transactional tools directly, your role is to validate parameters and handoff to the tool_executor_agent"},
         {"role": "user", "content": prompt}
     ]
 
@@ -251,6 +254,7 @@ def tool_executor_agent(state: MainState) -> MainState:
                                 })
                         else:
                             print(f"Tool not found: {tool_name}")
+                            
                             
     except Exception as e:
         print(f"Error in tool executor: {e}")

@@ -19,8 +19,8 @@ logger = setup_logger()
 def test_agents():
     # Initialize state first
     state = {
-        "user_id": "123456",
-        "session_id": "78922",
+        "user_id": "123464",
+        "session_id": "3400000334",
         "user_input": "My account number is 1234567890",
         "conversation_id": "",
         "kyc": {},
@@ -59,8 +59,8 @@ def test_agents():
             #result = triage_agent(state)
             #result = transaction_agent(state)
             result = parameter_collector_agent(state)
-            #result = tool_executor_agent(state)
-            #result = tool_response_handler(state)
+            result = tool_executor_agent(state)
+            result = tool_response_handler(state)
             with open('output.json', 'w') as f:
                 json.dump(result, f, indent=4)
             save_conversation(result)

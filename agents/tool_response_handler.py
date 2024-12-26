@@ -19,58 +19,52 @@ def tool_response_handler(state: MainState) -> MainState:
     kyc = state.get("kyc", [])
 
     
-    response_from_tool = [record.get("response_from_tool", "") 
-                         for record in previous_conversation_history 
+    response_from_tools = [record.get("response_from_tool", "") 
+                         for record in current_conversation_history 
                          if record.get("role") == "AI_AGENT"
                          and record.get("node") == "tool_executor_agent" 
                          and record.get("destination_agent") == "tool_response_handler"
-                         and record.get("conversation_id") == "123456789120241215191717" #state.get("conversation_id")
+                         and record.get("conversation_id") == state.get("conversation_id")
                          ]
 
-    print(f"Response from tool(s): {response_from_tool}")
+    print(f"Response from tool(s) for conversation: {state.get('conversation_id')}: {response_from_tools}")
+    
+    if not response_from_tools:
+        state["current_conversation_history"].append({
+            "role": "AI_AGENT",
+            "node": "tool_response_handler",
+            "conversation_id": state["conversation_id"],
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "content": {
+                "response_type": "handoff",
+                "selected_agents": [{
+                    "destination_agent": "triage_agent",
+                    "reason": "No tool response found, returning to triage for further assistance",
+                    "parameters": {
+                        "context": "Tool execution failed or returned no response",
+                        "agent_parameters": {}
+                    }
+                }]
+            }
+        })
+        return state
 
     prompt = f"""
     You are SwiftCash Bank's Tool Response Handler Agent, responsible for processing tool responses and determining appropriate next actions.
     Keep in mind the current_state below, and use the Response from tool(s) first, before considering the other information.
     ## CURRENT STATE
-    Response from tool(s): {response_from_tool}
+    Response from tool(s): {response_from_tools}
     User Input: {user_query}
-    Previous Conversation History for previous conversations: {previous_conversation_history}
-    Current Conversation History for this conversation turn: {current_conversation_history}
+    previous conversation history: {previous_conversation_history}
+    current conversation history: {current_conversation_history}
     KYC Status: {kyc}
     
+    **Important**: Please note that conversation history is arranged in reverse chronological order. When analyzing the conversation history, consider the most recent messages first. Some of the records may
+    be incomplete or not relevant to the current conversation.
 
     ## AVAILABLE TOOLS
 
-    1. account_transfer_tool:
-       Purpose: Transfer funds between accounts
-       When to use:
-       - Follow-up transfers needed
-       - Batch transfers
-       - Related account operations
-
-    2. balance_inquiry_tool:
-       Purpose: Check account balance
-       When to use:
-       - Post-transaction balance check
-       - Available funds verification
-       - Multiple account checks
-
-    3. transaction_history_tool:
-       Purpose: View transaction history
-       When to use:
-       - Verify transaction completion
-       - Check related transactions
-       - Transaction pattern analysis
-
-    4. paybill_tool:
-       Purpose: Pay bills
-       When to use:
-       - Additional bill payments
-       - Related service payments
-       - Scheduled payments
-
-    5. chat_tool:
+    1. chat_tool:
        Purpose: Communicate with user
        When to use:
        - Transaction confirmations
@@ -134,7 +128,7 @@ def tool_response_handler(state: MainState) -> MainState:
     ## RETURN FORMAT
     Strictly follow the format below, do not add any other fields or information
     
-       For tool calls:
+       For tool calls *IMPORTANT* Use this format strictly for tool calls, e.g chat_tool:
     {{
         "response_type": "tool_call",
         "selected_tools": [
@@ -144,7 +138,7 @@ def tool_response_handler(state: MainState) -> MainState:
                 "reason": "[Clear explanation for tool use]",
                 "parameters": {{
                     "response": "[Message conten to human or tool/agent ]",
-                    "next_best_agent": "[agent name for follow-up] - # This is the agent that is best suited to handle the next step after tool execution. If unsure, choose yourself - tool_executor_agent",
+                    "next_best_agent": "[agent name for follow-up] - # By default, the next best agent is yourself - tool_executor_agent, unless you are sure another agent is better suited to handle the next step",
                     "context" : "What is currently being handled e.g user is asking for balance, I have requested them for account number" ,
                     "tool_parameters": {{ "#Required and/or available transaction or customer parameters, empty if missing - use exact parameter names e.g account_number, amount"
                         "[parameter_name]": "[value]",
