@@ -1,0 +1,130 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34000003347",
+    "timestamp": "2024-12-27T15:07:45.809456",
+    "total_messages": 6,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Inform the user of their account balance and check if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has requested their account balance.",
+              "response": "Your available balance is KES 49,874. Is there anything else I can assist you with today?",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:06:27.263913+00:00",
+      "conversation_id": "1234643400000334720241227120614"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "timestamp": "2024-12-27T12:06:24.598417+00:00",
+      "response_type": "handoff",
+      "conversation_id": "1234643400000334720241227120614",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "account_number": "1234567890",
+          "actual_balance": "99453",
+          "available_balance": "49874"
+        },
+        "message": "Your available balance is KES 49874.",
+        "timestamp": "2024-12-27T12:06:24.598403+00:00",
+        "tool_name": "balance_inquiry_tool"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "The user is requesting to check their account balance, which falls under balance inquiries.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for account balance.",
+              "response": "Checking your account balance for account number 1234567890.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "balance_inquiry_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:06:24.598366+00:00",
+      "conversation_id": "1234643400000334720241227120614"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "All required parameters for balance inquiry are complete.",
+            "context": "User is asking for account balance.",
+            "parameters": {
+              "response": "Checking your account balance for account number 1234567890.",
+              "agent_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:06:22.553686+00:00",
+      "conversation_id": "1234643400000334720241227120614"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "The user is requesting to check their account balance, which falls under balance inquiries.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for account balance.",
+              "response": "Checking your account balance for account number 1234567890.",
+              "next_best_agent": "transaction_agent",
+              "tool_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:06:20.503450+00:00",
+      "conversation_id": "1234643400000334720241227120614"
+    },
+    {
+      "role": "user",
+      "content": "Yes check my account balance, my account is 1234567890",
+      "timestamp": "2024-12-27T12:06:20.503436+00:00",
+      "conversation_id": "1234643400000334720241227120614"
+    }
+  ]
+}

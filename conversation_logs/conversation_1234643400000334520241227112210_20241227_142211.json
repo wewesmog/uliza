@@ -1,0 +1,88 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34000003345",
+    "timestamp": "2024-12-27T14:22:11.930786",
+    "total_messages": 4,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:20:47.489686+00:00",
+      "conversation_id": "1234643400000334520241227112045"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:20:47.489657+00:00",
+      "conversation_id": "1234643400000334520241227112045"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:20:47.460615+00:00",
+      "conversation_id": "1234643400000334520241227112045"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:20:47.427872+00:00",
+      "conversation_id": "1234643400000334520241227112045"
+    }
+  ]
+}

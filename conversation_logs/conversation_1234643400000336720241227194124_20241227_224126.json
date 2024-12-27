@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34000003367",
+    "timestamp": "2024-12-27T22:41:26.326815",
+    "total_messages": 1,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "role": "user",
+      "content": "check my account balance. account is 12345678",
+      "timestamp": "2024-12-27T19:36:28.639324+00:00",
+      "conversation_id": "1234643400000336720241227193626"
+    }
+  ]
+}

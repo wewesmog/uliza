@@ -1,0 +1,1035 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34000003348",
+    "timestamp": "2024-12-27T21:12:24.725403",
+    "total_messages": 47,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "response_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "The user is requesting their account balance, which requires a transaction tool to retrieve the information.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for account balance, I have their account number.",
+              "response": "I am checking your account balance now. Please hold on a moment.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_tool": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T18:00:46.182578+00:00",
+      "response_id": "f702124d-b265-493d-a5a2-ec089254768e",
+      "conversation_id": "1234643400000334820241227180029"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "completed": "2024-12-27T18:00:43.107963+00:00",
+      "timestamp": "2024-12-27T18:00:43.107757+00:00",
+      "response_id": "09976a4e-933a-45aa-b9c9-be85e5cd6a82",
+      "response_type": "handoff",
+      "conversation_id": "1234643400000334820241227180029",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "account_number": "12345678",
+          "actual_balance": "60777",
+          "available_balance": "19994"
+        },
+        "message": "Your available balance is KES 19994.",
+        "timestamp": "2024-12-27T18:00:43.107658+00:00",
+        "tool_name": "balance_inquiry_tool"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User has requested to check their account balance.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_tool": "balance_inquiry_tool"
+          }
+        ]
+      },
+      "completed": "2024-12-27T18:00:43.107963+00:00",
+      "timestamp": "2024-12-27T18:00:43.107449+00:00",
+      "response_id": "d5d8847d-358e-408b-a55a-196778f47cc1",
+      "conversation_id": "1234643400000334820241227180029"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T18:00:43.107919+00:00",
+      "timestamp": "2024-12-27T18:00:39.402297+00:00",
+      "response_id": "fc9d6ded-366a-4761-b2bb-3414718ae8a0",
+      "conversation_id": "1234643400000334820241227180029"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T18:00:39.402388+00:00",
+      "timestamp": "2024-12-27T18:00:36.232734+00:00",
+      "response_id": "7da12484-7f09-4d93-afcc-935cf486332d",
+      "conversation_id": "1234643400000334820241227180029"
+    },
+    {
+      "role": "user",
+      "content": "please check my account balance. My account is 12345678",
+      "completed": "2024-12-27T18:00:39.402388+00:00",
+      "timestamp": "2024-12-27T18:00:36.232585+00:00",
+      "conversation_id": "1234643400000334820241227180029"
+    },
+    {
+      "node": "response_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User has requested to check their account balance.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for their account balance.",
+              "response": "I will check your account balance for account number 12345678.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_tool": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T17:53:30.203122+00:00",
+      "response_id": "c18514d9-465a-4291-872c-26b77b9ff288",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "completed": "2024-12-27T17:53:27.458245+00:00",
+      "timestamp": "2024-12-27T17:53:27.458145+00:00",
+      "response_id": "b7be907d-b8aa-4c2a-913b-ddd06a73a356",
+      "response_type": "handoff",
+      "conversation_id": "1234643400000334820241227175219",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "account_number": "12345678",
+          "actual_balance": "7330",
+          "available_balance": "77016"
+        },
+        "message": "Your available balance is KES 77016.",
+        "timestamp": "2024-12-27T17:53:27.458084+00:00",
+        "tool_name": "balance_inquiry_tool"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User has requested to check their account balance.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_tool": "balance_inquiry_tool"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:27.458245+00:00",
+      "timestamp": "2024-12-27T17:53:27.457984+00:00",
+      "response_id": "dff83550-acba-4bed-9b55-60220e6a8e51",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:27.458222+00:00",
+      "timestamp": "2024-12-27T17:53:24.336432+00:00",
+      "response_id": "6f25e746-ff23-4315-9333-3037ed95500d",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:24.336510+00:00",
+      "timestamp": "2024-12-27T17:53:21.726716+00:00",
+      "response_id": "60373598-d6db-4306-8b29-bd8ef48817ee",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:21.726821+00:00",
+      "timestamp": "2024-12-27T17:53:19.209534+00:00",
+      "response_id": "3dc222a1-a307-4242-8178-d0b263491799",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:19.209575+00:00",
+      "timestamp": "2024-12-27T17:53:16.705541+00:00",
+      "response_id": "996c3c27-4d71-4a33-a589-fef8c8a664ab",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:16.705580+00:00",
+      "timestamp": "2024-12-27T17:53:11.794545+00:00",
+      "response_id": "daa18e6b-0c39-4e21-ae03-4e7ade1dfef1",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:11.794624+00:00",
+      "timestamp": "2024-12-27T17:53:09.041923+00:00",
+      "response_id": "6f06f1ca-1469-4ca4-9d2e-2231b3a818ee",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:09.042019+00:00",
+      "timestamp": "2024-12-27T17:53:07.082617+00:00",
+      "response_id": "943b60d7-e70c-43d6-b0c9-54dca1abac1b",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:07.082722+00:00",
+      "timestamp": "2024-12-27T17:53:03.600763+00:00",
+      "response_id": "e2febe03-4c80-434d-bb3d-6bf71aa1a3e2",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:03.600871+00:00",
+      "timestamp": "2024-12-27T17:53:01.552383+00:00",
+      "response_id": "bbbd3d32-294a-491c-a0ae-60a7017da91a",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:53:01.552488+00:00",
+      "timestamp": "2024-12-27T17:52:59.299773+00:00",
+      "response_id": "4c49a96e-7337-4154-b8bc-f0887c599312",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:59.299877+00:00",
+      "timestamp": "2024-12-27T17:52:57.148453+00:00",
+      "response_id": "80b1c712-4eb3-44c2-bcc3-2b44f2295f5c",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:57.148521+00:00",
+      "timestamp": "2024-12-27T17:52:54.786403+00:00",
+      "response_id": "b110bfd4-d834-4f8e-9726-0a4e590c63ed",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:54.786471+00:00",
+      "timestamp": "2024-12-27T17:52:52.324302+00:00",
+      "response_id": "a05ea6ab-ef50-4935-9b96-c340fda3d257",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:52.324368+00:00",
+      "timestamp": "2024-12-27T17:52:50.068506+00:00",
+      "response_id": "5606044c-c0a4-44ba-9ff9-56cac9fc525b",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:50.068586+00:00",
+      "timestamp": "2024-12-27T17:52:47.713679+00:00",
+      "response_id": "217ac3b0-15c9-4df5-8d8c-f0b4b45ffd54",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:47.713769+00:00",
+      "timestamp": "2024-12-27T17:52:45.505982+00:00",
+      "response_id": "cc25711c-17fe-4bd0-b09c-45055924f5f1",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:45.506058+00:00",
+      "timestamp": "2024-12-27T17:52:42.711436+00:00",
+      "response_id": "4ae415a0-a4cb-4562-aa15-5bd5f881fdbb",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:42.711533+00:00",
+      "timestamp": "2024-12-27T17:52:39.740459+00:00",
+      "response_id": "4d0fd97f-add6-4683-b82b-b64f562945e7",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:39.740575+00:00",
+      "timestamp": "2024-12-27T17:52:37.692620+00:00",
+      "response_id": "a13e06a4-08f3-470e-8f4e-03b768dbe58f",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:37.692702+00:00",
+      "timestamp": "2024-12-27T17:52:35.029856+00:00",
+      "response_id": "42f35994-65da-4393-9c8a-4a24bb679757",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:35.029980+00:00",
+      "timestamp": "2024-12-27T17:52:32.910439+00:00",
+      "response_id": "b1a405c6-1a78-4bde-b095-c4dbd4692a6d",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:32.910557+00:00",
+      "timestamp": "2024-12-27T17:52:29.182708+00:00",
+      "response_id": "df8f08c2-1b43-4e5c-a780-019ee8319b71",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:29.182803+00:00",
+      "timestamp": "2024-12-27T17:52:26.838039+00:00",
+      "response_id": "a12ab0eb-8eba-4013-b35d-f6e0266b6072",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "completed": "2024-12-27T17:52:26.838163+00:00",
+      "timestamp": "2024-12-27T17:52:24.077632+00:00",
+      "response_id": "41d405b7-3f3a-4885-bc71-261d57a0b011",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "role": "user",
+      "content": "please check my account balance. My account is 12345678",
+      "completed": "2024-12-27T17:52:26.838163+00:00",
+      "timestamp": "2024-12-27T17:52:24.077506+00:00",
+      "conversation_id": "1234643400000334820241227175219"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User wants to check their balance for account number 12345678.",
+              "agent_parameters": {
+                "account_number": "12345678"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T17:34:32.551524+00:00",
+      "response_id": "fc2e6769-16f3-484b-b364-2a7784ad9954",
+      "conversation_id": "1234643400000334820241227173427"
+    },
+    {
+      "role": "user",
+      "content": "I want to check my balance. My acount is 12345678",
+      "timestamp": "2024-12-27T17:34:32.551427+00:00",
+      "conversation_id": "1234643400000334820241227173427"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:11:15.931028+00:00",
+      "conversation_id": "1234643400000334820241227121104"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameters for the fund transfer.",
+            "parameters": {
+              "context": "User is requesting a fund transfer.",
+              "response": "User has requested to transfer KES 1000 to account number 1234567890, but I need the source account number to proceed.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number_to": "1234567890"
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:11:15.930913+00:00",
+      "conversation_id": "1234643400000334820241227121104"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameters for the fund transfer.",
+            "context": "User is requesting a fund transfer, but the source account number is not provided.",
+            "parameters": {
+              "response": "User has requested to transfer KES 1000 to account number 1234567890, but I need the source account number to proceed.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number_to": "1234567890"
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:11:12.960975+00:00",
+      "conversation_id": "1234643400000334820241227121104"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has requested to transfer funds, which falls under financial operations.",
+            "parameters": {
+              "context": "User is requesting a fund transfer.",
+              "response": "User has requested to transfer KES 1000 to account number 1234567890.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number": "1234567890"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:11:10.379315+00:00",
+      "conversation_id": "1234643400000334820241227121104"
+    },
+    {
+      "role": "user",
+      "content": "Yes, please transfer 1000 to 1234567890",
+      "timestamp": "2024-12-27T12:11:10.379259+00:00",
+      "conversation_id": "1234643400000334820241227121104"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about their account balance after a successful inquiry.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has requested to check their account balance and I have provided the available balance.",
+              "response": "Your available balance is KES 79,502. If you need any further assistance or have other transactions in mind, feel free to ask!",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:10:27.800956+00:00",
+      "conversation_id": "1234643400000334820241227121016"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "timestamp": "2024-12-27T12:10:25.342032+00:00",
+      "response_type": "handoff",
+      "conversation_id": "1234643400000334820241227121016",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "account_number": "1234567890",
+          "actual_balance": "35299",
+          "available_balance": "79502"
+        },
+        "message": "Your available balance is KES 79502.",
+        "timestamp": "2024-12-27T12:10:25.342014+00:00",
+        "tool_name": "balance_inquiry_tool"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User has requested to check their account balance.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User has requested to check their account balance.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_tool": "balance_inquiry_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:10:25.341966+00:00",
+      "conversation_id": "1234643400000334820241227121016"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User has provided complete parameters to check their account balance.",
+            "context": "User is asking for balance, I have their account number.",
+            "parameters": {
+              "response": "User has requested to check their account balance.",
+              "agent_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:10:23.296124+00:00",
+      "conversation_id": "1234643400000334820241227121016"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User is requesting to check their account balance, which falls under financial operations.",
+            "parameters": {
+              "context": "User is asking for balance, I have their account number.",
+              "response": "User has requested to check their account balance.",
+              "agent_parameters": {
+                "account_number": "1234567890"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T12:10:21.048225+00:00",
+      "conversation_id": "1234643400000334820241227121016"
+    },
+    {
+      "role": "user",
+      "content": "Please check my account balance, my account is 1234567890",
+      "timestamp": "2024-12-27T12:10:21.048177+00:00",
+      "conversation_id": "1234643400000334820241227121016"
+    }
+  ]
+}

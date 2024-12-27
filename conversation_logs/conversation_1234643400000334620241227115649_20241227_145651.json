@@ -1,0 +1,289 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "34000003346",
+    "timestamp": "2024-12-27T14:56:51.177413",
+    "total_messages": 14,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transfer and new balance.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has successfully completed a money transfer.",
+              "response": "Your transfer of KES 100,000 to account 1234567891 was successful. Your new balance is KES 61,735. Is there anything else I can assist you with today?",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:50:33.982129+00:00",
+      "conversation_id": "1234643400000334620241227115018"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "timestamp": "2024-12-27T11:50:30.375372+00:00",
+      "response_type": "handoff",
+      "conversation_id": "1234643400000334620241227115018",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "amount": "100000",
+          "reason": null,
+          "balance": "61735",
+          "to_account": "1234567891",
+          "from_account": "1234567890"
+        },
+        "message": "Your transfer of KES 100000 to account 1234567891 was successful. Your new balance is KES 61735.",
+        "timestamp": "2024-12-27T11:50:30.375315+00:00",
+        "tool_name": "account_transfer_tool",
+        "transaction_id": "TRX258186"
+      }
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "User is requesting to transfer money to a friend's account.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User wants to transfer money to their friend.",
+              "response": "Proceeding with the money transfer request.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "100000",
+                "account_number_to": "1234567891",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "account_transfer_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:50:30.375152+00:00",
+      "conversation_id": "1234643400000334620241227115018"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "All required parameters for the money transfer are present.",
+            "context": "User wants to transfer money to their friend.",
+            "parameters": {
+              "response": "Proceeding with the money transfer request.",
+              "agent_parameters": {
+                "amount": "100000",
+                "account_number_to": "1234567891",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:50:27.302988+00:00",
+      "conversation_id": "1234643400000334620241227115018"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "User wants to transfer money, which requires financial operations handling.",
+            "parameters": {
+              "context": "User wants to transfer money to their friend.",
+              "response": "User is requesting to transfer money to a friend's account.",
+              "agent_parameters": {
+                "amount": "100000",
+                "account_number": "1234567890",
+                "friend_account_number": "1234567891"
+              }
+            },
+            "destination_agent": "transaction_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:50:23.819424+00:00",
+      "conversation_id": "1234643400000334620241227115018"
+    },
+    {
+      "role": "user",
+      "content": "I want to transfer money to my friend. My account number is 1234567890, my friend's account number is 1234567891, the amount is 100000",
+      "timestamp": "2024-12-27T11:50:23.819407+00:00",
+      "conversation_id": "1234643400000334620241227115018"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:49:25.143051+00:00",
+      "conversation_id": "1234643400000334620241227114921"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:49:25.142940+00:00",
+      "conversation_id": "1234643400000334620241227114921"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:49:24.732950+00:00",
+      "conversation_id": "1234643400000334620241227114921"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:49:24.314494+00:00",
+      "conversation_id": "1234643400000334620241227114921"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:46:51.463311+00:00",
+      "conversation_id": "1234643400000334620241227114643"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Error in tool execution",
+            "parameters": {
+              "response": "I apologize, but I encountered an error. Please try again later.",
+              "next_best_agent": "triage_agent"
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-27T11:46:51.463219+00:00",
+      "conversation_id": "1234643400000334620241227114643"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:46:49.709052+00:00",
+      "conversation_id": "1234643400000334620241227114643"
+    },
+    {
+      "node": "triage_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "agents": [
+          {
+            "tool": "Respond to Human Tool",
+            "reason": "Error parsing LLM response",
+            "parameters": {
+              "next_best_agent": "triage agent",
+              "message_for_human": "I apologize, but I encountered an error. Please try again later."
+            }
+          }
+        ],
+        "response_type": "tool_call"
+      },
+      "timestamp": "2024-12-27T11:46:47.764201+00:00",
+      "conversation_id": "1234643400000334620241227114643"
+    }
+  ]
+}

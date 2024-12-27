@@ -1,0 +1,289 @@
+{
+  "status": "success",
+  "metadata": {
+    "user_id": "123464",
+    "session_id": "3400000334",
+    "timestamp": "2024-12-27T14:14:29.690760",
+    "total_messages": 12,
+    "query_limit": 10
+  },
+  "conversations": [
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Account number format is valid, but further confirmation is needed for the transfer parameters.",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:12:58.830372+00:00",
+      "conversation_id": "123464340000033420241226121250"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:12:58.830372+00:00",
+      "conversation_id": "123464340000033420241226121250"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer parameters.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:12:55.956507+00:00",
+      "conversation_id": "123464340000033420241226121250"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting account number for balance inquiry.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is asking to check their account balance, but account number is not provided.",
+              "response": "Please provide your account number to check your balance.",
+              "next_best_agent": "parameter_collector_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:12:10.003601+00:00",
+      "conversation_id": "123464340000033420241226121205"
+    },
+    {
+      "node": "transaction_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "Missing required parameter for balance inquiry.",
+            "context": "User is asking to check their account balance, but account number is not provided.",
+            "parameters": {
+              "response": "Please provide your account number to check your balance.",
+              "agent_parameters": {}
+            },
+            "destination_agent": "parameter_collector_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:10:17.143440+00:00",
+      "conversation_id": "123464340000033420241226121012"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "No tool response found, returning to triage for further assistance",
+            "parameters": {
+              "context": "Tool execution failed or returned no response",
+              "agent_parameters": {}
+            },
+            "destination_agent": "triage_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:08:44.172291+00:00",
+      "conversation_id": "123464340000033420241226120842"
+    },
+    {
+      "node": "tool_response_handler",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Informing the user about the successful transfer and checking if they need further assistance.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User has confirmed the transaction and it has been successfully completed.",
+              "response": "Your transfer of KES 1000 to account 2234567890 was successful. Your new balance is KES 45809. Do you need help with anything else?",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {}
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:07:58.270407+00:00",
+      "conversation_id": "123464340000033420241226120748"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Proceeding with the confirmed fund transfer.",
+            "tool_type": "transactional",
+            "parameters": {
+              "context": "User has confirmed the transaction for fund transfer.",
+              "response": "Initiating transfer from account 1234567890 to account 2234567890 for amount 1000.",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "account_transfer_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:07:53.834974+00:00",
+      "conversation_id": "123464340000033420241226120748"
+    },
+    {
+      "node": "tool_executor_agent",
+      "role": "AI_AGENT",
+      "timestamp": "2024-12-26T12:07:53.834974+00:00",
+      "response_type": "handoff",
+      "conversation_id": "123464340000033420241226120748",
+      "destination_agent": "tool_response_handler",
+      "response_from_tool": {
+        "code": "SUCCESS_001",
+        "status": "success",
+        "details": {
+          "amount": "1000",
+          "reason": null,
+          "balance": "45809",
+          "to_account": "2234567890",
+          "from_account": "1234567890"
+        },
+        "message": "Your transfer of KES 1000 to account 2234567890 was successful. Your new balance is KES 45809.",
+        "timestamp": "2024-12-26T12:07:53.834974+00:00",
+        "tool_name": "account_transfer_tool",
+        "transaction_id": "TRX638751"
+      }
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "handoff",
+        "selected_agents": [
+          {
+            "reason": "All parameters are collected and validated, and the user has confirmed the transaction.",
+            "parameters": {
+              "context": "User has confirmed the transaction for fund transfer.",
+              "response": "Proceeding with the transfer from account 1234567890 to account 2234567890 for amount 1000.",
+              "agent_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_agent": "tool_executor_agent"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:07:22.018739+00:00",
+      "conversation_id": "123464340000033420241226120716"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer parameters.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:06:25.698791+00:00",
+      "conversation_id": "123464340000033420241226120620"
+    },
+    {
+      "node": "parameter_collector_agent",
+      "role": "AI_AGENT",
+      "content": {
+        "response_type": "tool_call",
+        "selected_tools": [
+          {
+            "reason": "Requesting confirmation for the transfer parameters.",
+            "tool_type": "informational",
+            "parameters": {
+              "context": "User is requesting to transfer funds.",
+              "response": "Please confirm transfer from account 1234567890 to account 2234567890 for amount 1000",
+              "next_best_agent": "tool_executor_agent",
+              "tool_parameters": {
+                "amount": "1000",
+                "account_number_to": "2234567890",
+                "account_number_from": "1234567890"
+              }
+            },
+            "destination_tool": "chat_tool"
+          }
+        ]
+      },
+      "timestamp": "2024-12-26T12:05:35.656835+00:00",
+      "conversation_id": "123464340000033420241226120530"
+    }
+  ]
+}
